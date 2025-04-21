@@ -1,3 +1,8 @@
+using Html2ViewsConversion.Data;
+
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
+
 namespace Html2ViewsConversion
 {
     public class Program
@@ -5,6 +10,12 @@ namespace Html2ViewsConversion
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
+          builder.Services.AddDbContext<ApplicationDbContext>(
+          options => options.UseInMemoryDatabase("TemporaryDb"));
+
+          builder.Services.AddDefaultIdentity<IdentityUser>()
+        .AddEntityFrameworkStores<ApplicationDbContext>(); 
+
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
