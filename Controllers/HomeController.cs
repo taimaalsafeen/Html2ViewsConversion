@@ -25,7 +25,7 @@ namespace Html2ViewsConversion.Controllers
 
         public async Task<IActionResult> Index()
         {
-            var homeVieModel = new HomeViewModel
+            var homeViewModel = new HomeViewModel
             {
                 CarouselItems = new List<CarouselItemViewModel>
                 
@@ -141,12 +141,21 @@ namespace Html2ViewsConversion.Controllers
                         Category = "Home & Kitchen"
                     }
                 },
+                SpecialOffer = new SpecialOfferViewModel
+                {
+                    Title = " Specail Offers",
+                    SubTitle = " Limited Time Offer",
+                    Descrption = "Get up to 70% off on selected items, limeted stock available!",
+                    ButtonText = "Shop the sale",
+                    Category = "sale",
+               
+                }
 
             
 
 
             };
-            return View(homeVieModel);
+            return View(homeViewModel);
         
             
         }
